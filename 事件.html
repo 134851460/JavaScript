@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 50vw;
+            height: 50vh;
+            border: 1px solid;
+            /* background: red; */
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        asdsad
+    </div>
+    <input type="text" name="ipt" id="ipt">
+</body>
+</html>
+<script>
+    window.onload=function(){
+        var ipt=document.getElementById("ipt");
+        var div1=document.getElementById("div1");
+        div1.style.color="blue";
+        ipt.onfocus=function(){
+            console.log("获得焦点");
+        }
+        ipt.onblur=function(){
+            if(ipt.value==""){
+                alert("请输入内容");
+            }
+        }
+    }
+    document.onkeydown=function(event){
+        // console.log(event.keyCode);
+    }
+    document.onkeyup=function(event){
+        // console.log(event.keyCode);
+    }
+    document.onkeypress=function(event){
+        console.log(event.keyCode);
+    }
+    // div1.ontouchend=function(event){
+    //     div1.innerHTML=event.pageX;
+    // }
+    window.addEventListener("orientationchange",function(event){
+        document.write(orientation);
+    })
+    // document.onorientationchange=function(){
+    //     div1.innerHTML=window.orientation;
+    // }
+</script>

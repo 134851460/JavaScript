@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    #pan{
+        width: 200px;height: 200px;
+        position: absolute;
+        top: 0;left: 0;right: 0;
+        margin: 100px auto ;
+        background: url(img/pan.png) ;
+        background-size: 200px; 
+    }
+    #hou{
+        position: absolute;
+        left: 97px;bottom: 100px;
+        transform-origin: 50% 98%;
+    }
+    #min{
+        position: absolute;
+        left: 97px;bottom: 100px;
+        transform-origin: 50% 98%;
+    }
+    #sec{
+        position: absolute;
+        left: 98px;bottom: 100px;
+        transform-origin: 50% 98%;
+    }
+
+</style>
+<body>
+    <div id="pan">
+        <img src="img/hou.png" alt="" id="hou">
+        <img src="img/min.png" alt="" id="min">
+        <img src="img/sec.png" alt="" id="sec">
+    </div>
+</body>
+</html>
+<script>
+    var sec=document.getElementById("sec");
+    var min=document.getElementById("min");
+    var hou=document.getElementById("hou");
+    var time=new Date;
+    var st=time.getSeconds();
+    var mt=time.getMinutes();
+    var ht=time.getHours();
+    var count=ht+Math.floor(mt/10);
+    
+    zzzd();
+    function zzzd() {
+        console.log(count);
+        hou.style.transform="rotate("+(ht+count)*6+"deg)";
+        min.style.transform="rotate("+mt*6+"deg)";
+        sec.style.transform="rotate("+st*6+"deg)";
+        st++;
+        if (st==60) {
+            mt++;
+            st=0;
+            if (mt%10==0) {
+                count++;
+            }
+            if (mt==60) {
+                mt=0;
+            }
+        }
+    }
+    setInterval(zzzd,1000)
+</script>
