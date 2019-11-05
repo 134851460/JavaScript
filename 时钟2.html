@@ -19,16 +19,18 @@
         position: absolute;
         left: 97px;bottom: 100px;
         transform-origin: 50% 98%;
+        /* display: none; */
     }
     #min{
         position: absolute;
         left: 97px;bottom: 100px;
         transform-origin: 50% 98%;
+        /* display: none; */
     }
     #sec{
         position: absolute;
-        left: 98px;bottom: 100px;
-        transform-origin: 50% 98%;
+        left: 98px;bottom: 77px;
+        transform-origin: 50% 68%;
     }
 
 </style>
@@ -44,29 +46,21 @@
     var sec=document.getElementById("sec");
     var min=document.getElementById("min");
     var hou=document.getElementById("hou");
-    var time=new Date;
-    var st=time.getSeconds();
-    var mt=time.getMinutes();
-    var ht=time.getHours();
-    var count=ht+Math.floor(mt/10);
+    console.log(mt);
+    console.log(ht);
+    console.log(mt/60);
     
     zzzd();
     function zzzd() {
-        console.log(count);
-        hou.style.transform="rotate("+(ht+count)*6+"deg)";
+        var time=new Date;
+        var st=time.getSeconds();                                   //获取当前的秒种刻度
+        var mt=time.getMinutes();                                   //获取当前的分钟刻度
+        var ht=time.getHours();                                     //获取当前的时钟刻度
+        var count=mt/60;                                            //获取当前时针的具体刻度
+
+        hou.style.transform="rotate("+(ht+count)*30+"deg)";         //时针的角度为时钟的整点刻度加上具体刻度再乘以30
         min.style.transform="rotate("+mt*6+"deg)";
         sec.style.transform="rotate("+st*6+"deg)";
-        st++;
-        if (st==60) {
-            mt++;
-            st=0;
-            if (mt%10==0) {
-                count++;
-            }
-            if (mt==60) {
-                mt=0;
-            }
-        }
     }
-    setInterval(zzzd,1000)
+    setInterval(zzzd,1000)                                      //每1000毫秒（一秒）执行一次
 </script>
